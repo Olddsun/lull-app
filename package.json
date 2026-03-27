@@ -1,6 +1,6 @@
 {
   "name": "Lull",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Lull — ambient sound player for macOS",
   "main": "main.js",
   "scripts": {
@@ -35,14 +35,6 @@
       "**/*",
       "!node_modules/**",
       "sounds/**"
-    ],
-    "publish": {
-      "provider": "github",
-      "owner": "Olddsun",
-      "repo": "lull-app"
-    }
-  },
-  "dependencies": {
-    "electron-updater": "^6.8.3"
+    ]
   }
 }
