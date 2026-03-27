@@ -1,5 +1,6 @@
-const { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage } = require('electron')
+const { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage, dialog } = require('electron')
 const path = require('path')
+const { autoUpdater } = require('electron-updater')
 
 app.setName('Lull')
 app.commandLine.appendSwitch('disable-features', 'HardwareMediaKeyHandling')
@@ -113,6 +114,19 @@ app.whenReady().then(() => {
   createWindow()
   createTray()
   app.dock.setIcon(path.join(__dirname, 'dock-icon.png'))
+
+  autoUpdater.checkForUpdates()
+})
+
+autoUpdater.on('update-downloaded', () => {
+  dialog.showMessageBox({
+    type: 'info',
+    title: 'Lull 有新版本',
+    message: '新版本已下載完成，重新啟動即可更新。',
+    buttons: ['立即重啟', '稍後']
+  }).then(({ response }) => {
+    if (response === 0) autoUpdater.quitAndInstall()
+  })
 })
 
 app.on('window-all-closed', (e) => {
