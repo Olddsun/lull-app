@@ -151,8 +151,12 @@ app.whenReady().then(() => {
   checkForUpdates()
 })
 
+app.on('before-quit', () => {
+  app.isQuitting = true
+})
+
 app.on('window-all-closed', (e) => {
-  e.preventDefault()
+  if (!app.isQuitting) e.preventDefault()
 })
 
 app.on('activate', () => {
