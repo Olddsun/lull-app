@@ -108,6 +108,10 @@ function createWindow() {
       mainWindow.hide()
     }
   })
+
+  mainWindow.on('moved', () => {
+    mainWindow.webContents.send('recalculate-size')
+  })
 }
 
 app.whenReady().then(() => {

@@ -121,9 +121,15 @@ function stopAutoMode() {
 document.addEventListener('DOMContentLoaded', () => {
   initAudio()
 
-  // 自動調整視窗高度配合內容
-  const totalHeight = document.body.scrollHeight
-  ipcRenderer.send('resize-to-content', totalHeight)
+  // 自動調整視窗高度配合內容（等 layout 完全渲染後再量）
+  function sendResize() {
+    const totalHeight = document.body.scrollHeight
+    ipcRenderer.send('resize-to-content', totalHeight)
+  }
+  setTimeout(sendResize, 0)
+
+  // 移到不同螢幕時重新計算高度
+  ipcRenderer.on('recalculate-size', sendResize)
 
   // 播放按鈕
   document.getElementById('playBtn').addEventListener('click', togglePlay)

@@ -1,6 +1,6 @@
 {
   "name": "Lull",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Lull — ambient sound player for macOS",
   "main": "main.js",
   "scripts": {
