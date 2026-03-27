@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lull — Ambient Sound Player</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo"><img src="nav-logo.png" alt="Lull" /></div>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button id="lang-en" class="active" onclick="setLang('en')">EN</button>
+        <span>/</span>
+        <button id="lang-zh" onclick="setLang('zh')">中文</button>
+      </div>
+      <a href="https://github.com/Olddsun/lull-app" target="_blank" class="nav-github">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-title">
+        <img src="logo.png" alt="Lull logo" class="hero-logo" />
+        <h1>Lull</h1>
+      </div>
+      <p class="tagline" data-en="A lightweight ambient sound player for macOS. Mix rain, wind, fire, ocean, birds, and café noise freely — find your perfect focus environment." data-zh="一款輕量的環境音播放器。自由混合雨聲、風聲、火焰、海浪、鳥鳴、咖啡廳白噪音，打造屬於你的專注空間。"></p>
+      <div class="hero-buttons">
+        <a href="https://github.com/Olddsun/lull-app/releases/latest" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-6 2h12v2H6v-2z"/></svg>
+          <span data-en="Download for macOS" data-zh="下載 macOS 版本"></span>
+        </a>
+        <a href="https://github.com/Olddsun/lull-app" target="_blank" class="btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span data-en="Source Code" data-zh="原始碼"></span>
+        </a>
+      </div>
+      <p class="version-note" data-en="Free · Open Source · macOS 12+" data-zh="免費 · 開放原始碼 · macOS 12+"></p>
+    </div>
+    <div class="hero-media">
+      <video src="demo.mov" autoplay muted loop playsinline></video>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <h2 data-en="Features" data-zh="功能特色"></h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="icon">🎚️</span>
+        <h3 data-en="Mix 6 Sound Sources" data-zh="6 種環境音混音"></h3>
+        <p data-en="Rain, Wind, Birds, Fire, Waves, and Café — adjust each independently." data-zh="雨聲、風聲、鳥鳴、火焰、海浪、咖啡廳，各自獨立調整音量。"></p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">🌲</span>
+        <h3 data-en="Quick Scenes" data-zh="快速場景切換"></h3>
+        <p data-en="One click to switch between Forest, Rainy Night, Café, and Beach." data-zh="一鍵切換森林、雨夜、咖啡廳、海灘四種預設場景。"></p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">✨</span>
+        <h3 data-en="Auto Mode" data-zh="自動調整模式"></h3>
+        <p data-en="Let Lull gently shift the mix over time, so you never get bored." data-zh="讓 Lull 自動隨時間微調混音，保持新鮮感。"></p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">📌</span>
+        <h3 data-en="Always on Top" data-zh="懸浮視窗"></h3>
+        <p data-en="Keep Lull floating above your workspace, always within reach." data-zh="讓 Lull 懸浮在所有視窗之上，隨時可調整。"></p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">🔇</span>
+        <h3 data-en="Hide & Keep Playing" data-zh="隱藏視窗繼續播放"></h3>
+        <p data-en="Close the window — music keeps playing quietly in the background." data-zh="關閉視窗後音樂不會停止，安靜在背景繼續運作。"></p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">🖥️</span>
+        <h3 data-en="Menu Bar Control" data-zh="選單列控制"></h3>
+        <p data-en="Play, pause, and adjust settings right from the macOS menu bar." data-zh="直接從 macOS 選單列播放、暫停與調整設定。"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security Note -->
+  <section class="security-section">
+    <h2 data-en="First time opening" data-zh="第一次開啟說明"></h2>
+    <p data-en="Since Lull is not signed with an Apple Developer certificate, macOS may show a security warning on first launch." data-zh="由於 Lull 未經 Apple Developer 憑證簽署，macOS 第一次開啟時可能會顯示安全性警告。"></p>
+    <ol>
+      <li data-en="Open <strong>System Settings</strong>" data-zh="開啟<strong>系統設定</strong>"></li>
+      <li data-en="Go to <strong>Privacy & Security</strong>" data-zh="前往<strong>隱私權與安全性</strong>"></li>
+      <li data-en="Scroll down and click <strong>Open Anyway</strong>" data-zh="往下滑，點擊<strong>仍要開啟</strong>"></li>
+    </ol>
+    <p class="security-sub" data-en="This is a one-time step. Lull contains no malware." data-zh="此步驟只需操作一次，Lull 不含任何惡意程式。"></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footer-text">
+      <span data-en="Built with care · " data-zh="用心製作 · "></span>
+      <a href="https://github.com/Olddsun/lull-app" target="_blank" data-en="Open Source on GitHub" data-zh="開放原始碼於 GitHub"></a>
+    </p>
+    <a href="https://ko-fi.com/scottsun" target="_blank" class="btn-coffee">☕ <span data-en="Buy me a coffee" data-zh="請我喝杯咖啡"></span></a>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.innerHTML = el.getAttribute('data-' + lang);
+      });
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+      document.body.style.fontFamily = lang === 'zh'
+        ? "'Noto Sans TC', sans-serif"
+        : "'Roboto', sans-serif";
+    }
+    setLang('en');
+  </script>
+
+</body>
+</html>
