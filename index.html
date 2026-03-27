@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lull</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-wrapper">
+  <div class="window-drag" id="dragArea">
+    <div class="titlebar">
+      <span class="app-title">Lull</span>
+      <div class="window-controls">
+        <button id="collapseBtn" class="ctrl-btn collapse" title="Collapse">▲</button>
+        <button id="minimizeBtn" class="ctrl-btn minimize">─</button>
+        <button id="closeBtn" class="ctrl-btn close">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="main-control">
+      <button id="playBtn" class="play-btn">▶</button>
+      <span id="playLabel" class="play-label">Play</span>
+      <div class="spacer"></div>
+      <label class="auto-toggle">
+        <input type="checkbox" id="autoMode">
+        <span>Auto</span>
+      </label>
+    </div>
+
+    <div class="sounds">
+      <div class="sound-row" data-sound="rain">
+        <span class="sound-icon">🌧</span>
+        <span class="sound-label">Rain</span>
+        <input type="range" min="0" max="100" value="60" class="slider" id="rain-slider">
+        <span class="vol-num" id="rain-vol">60</span>
+      </div>
+      <div class="sound-row" data-sound="wind">
+        <span class="sound-icon">🍃</span>
+        <span class="sound-label">Wind</span>
+        <input type="range" min="0" max="100" value="30" class="slider" id="wind-slider">
+        <span class="vol-num" id="wind-vol">30</span>
+      </div>
+      <div class="sound-row" data-sound="birds">
+        <span class="sound-icon">🐦</span>
+        <span class="sound-label">Birds</span>
+        <input type="range" min="0" max="100" value="20" class="slider" id="birds-slider">
+        <span class="vol-num" id="birds-vol">20</span>
+      </div>
+      <div class="sound-row" data-sound="fire">
+        <span class="sound-icon">🔥</span>
+        <span class="sound-label">Fire</span>
+        <input type="range" min="0" max="100" value="0" class="slider" id="fire-slider">
+        <span class="vol-num" id="fire-vol">0</span>
+      </div>
+      <div class="sound-row" data-sound="waves">
+        <span class="sound-icon">🌊</span>
+        <span class="sound-label">Waves</span>
+        <input type="range" min="0" max="100" value="0" class="slider" id="waves-slider">
+        <span class="vol-num" id="waves-vol">0</span>
+      </div>
+      <div class="sound-row" data-sound="cafe">
+        <span class="sound-icon">☕</span>
+        <span class="sound-label">Café</span>
+        <input type="range" min="0" max="100" value="0" class="slider" id="cafe-slider">
+        <span class="vol-num" id="cafe-vol">0</span>
+      </div>
+    </div>
+
+    <div class="presets">
+      <span class="preset-label">Scenes</span>
+      <div class="preset-btns">
+        <button class="preset" data-preset="forest">🌲 Forest</button>
+        <button class="preset" data-preset="rain">🌧 Rainy Night</button>
+        <button class="preset" data-preset="cafe">☕ Café</button>
+        <button class="preset" data-preset="beach">🏖 Beach</button>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>

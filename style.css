@@ -1,0 +1,283 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  background: transparent;
+  color: #fff;
+  user-select: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.app-wrapper {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+.window-drag {
+  -webkit-app-region: drag;
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px 8px;
+  background: rgba(38, 38, 42, 0.75);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border-radius: 14px 14px 0 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.app-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.3px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 6px;
+  -webkit-app-region: no-drag;
+}
+
+.ctrl-btn {
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: rgba(255,255,255,0.4);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.ctrl-btn:hover {
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.8);
+}
+
+.ctrl-btn.close:hover {
+  background: rgba(255, 69, 58, 0.5);
+  color: white;
+}
+
+.container {
+  background: rgba(30, 30, 34, 0.78);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border-radius: 0 0 14px 14px;
+  padding: 10px 12px 12px;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-top: none;
+}
+
+/* 主播放控制 */
+.main-control {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 12px;
+}
+
+.play-btn {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 50%;
+  color: rgba(255,255,255,0.85);
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.play-btn:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+.play-btn:active {
+  transform: scale(0.95);
+}
+
+.play-btn.playing {
+  background: rgba(48, 209, 88, 0.2);
+  border-color: rgba(48, 209, 88, 0.4);
+  color: rgb(48, 209, 88);
+}
+
+.play-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.auto-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  white-space: nowrap;
+}
+
+.auto-toggle input[type="checkbox"] {
+  width: 30px;
+  height: 17px;
+  appearance: none;
+  background: rgba(255,255,255,0.12);
+  border-radius: 9px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.auto-toggle input[type="checkbox"]:checked {
+  background: rgba(48, 209, 88, 0.7);
+}
+
+.auto-toggle input[type="checkbox"]::after {
+  content: '';
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: left 0.18s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.auto-toggle input[type="checkbox"]:checked::after {
+  left: 15px;
+}
+
+/* 音源列 */
+.sounds {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.sound-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sound-icon {
+  font-size: 13px;
+  width: 18px;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.sound-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  width: 30px;
+  letter-spacing: -0.1px;
+}
+
+.slider {
+  flex: 1;
+  max-width: 140px;
+  height: 3px;
+  appearance: none;
+  background: rgba(255,255,255,0.12);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  transition: transform 0.1s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+}
+
+.vol-num {
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  width: 22px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 預設場景 */
+.presets {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 14px;
+}
+
+.preset-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  display: block;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.preset-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.preset {
+  padding: 6px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 7px;
+  color: rgba(255,255,255,0.55);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: -0.1px;
+}
+
+.preset:hover {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.15);
+}
+
+.preset.active {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
+  color: white;
+}
