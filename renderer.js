@@ -7,7 +7,7 @@ const soundConfig = {
   wind:  { file: 'wind.mp3',   defaultVol: 0.3 },
   birds: { file: 'bird.mp3',   defaultVol: 0.2 },
   fire:  { file: 'fire.mp3',   defaultVol: 0.0 },
-  waves: { file: 'ocean.mp3',  defaultVol: 0.2 },
+  waves: { file: 'ocean.mp3',  defaultVol: 0.3 },
   cafe:  { file: 'coffee.mp3', defaultVol: 0.0 }
 }
 
