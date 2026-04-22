@@ -1,5 +1,4 @@
-const { ipcRenderer } = require('electron')
-const path = require('path')
+const ipc = window.electronAPI
 
 // 音效設定
 const soundConfig = {
@@ -27,7 +26,7 @@ let autoModeInterval = null
 function initAudio() {
   for (const [key, config] of Object.entries(soundConfig)) {
     const audio = new Audio()
-    audio.src = path.join(__dirname, 'sounds', config.file)
+    audio.src = `sounds/${config.file}`
     audio.loop = true
     audio.volume = config.defaultVol
     audioElements[key] = audio
@@ -37,7 +36,7 @@ function initAudio() {
 // 播放/暫停
 function togglePlay() {
   isPlaying = !isPlaying
-  ipcRenderer.send('play-state', isPlaying)
+  ipc.send('play-state', isPlaying)
   const btn = document.getElementById('playBtn')
 
   const label = document.getElementById('playLabel')
@@ -75,6 +74,8 @@ function setVolume(key, value) {
   const volNum = document.getElementById(`${key}-vol`)
   if (slider) slider.value = value
   if (volNum) volNum.textContent = value
+  const fill = document.getElementById(`${key}-fill`)
+  if (fill) fill.style.width = value + '%'
 
   if (audioElements[key]) {
     audioElements[key].volume = value / 100
@@ -124,25 +125,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // 自動調整視窗高度配合內容（等 layout 完全渲染後再量）
   function sendResize() {
     const totalHeight = document.body.scrollHeight
-    ipcRenderer.send('resize-to-content', totalHeight)
+    ipc.send('resize-to-content', totalHeight)
   }
   setTimeout(sendResize, 0)
 
   // 移到不同螢幕時重新計算高度
-  ipcRenderer.on('recalculate-size', sendResize)
+  ipc.on('recalculate-size', sendResize)
 
   // 播放按鈕
   document.getElementById('playBtn').addEventListener('click', togglePlay)
 
   // 接收 tray 的播放/暫停指令
-  ipcRenderer.on('toggle-play', () => togglePlay())
+  ipc.on('toggle-play', () => togglePlay())
 
   // 關閉 / 最小化 / 縮小
   document.getElementById('closeBtn').addEventListener('click', () => {
-    ipcRenderer.send('close-app')
+    ipc.send('close-app')
   })
   document.getElementById('minimizeBtn').addEventListener('click', () => {
-    ipcRenderer.send('minimize-app')
+    ipc.send('minimize-app')
   })
 
   let isCollapsed = false
@@ -154,11 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isCollapsed) {
       container.style.display = 'none'
       btn.textContent = '▼'
-      ipcRenderer.send('collapse-window', fullHeight)
+      ipc.send('collapse-window', fullHeight)
     } else {
       container.style.display = 'block'
       btn.textContent = '▲'
-      ipcRenderer.send('expand-window')
+      ipc.send('expand-window')
     }
   })
 

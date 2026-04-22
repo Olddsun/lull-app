@@ -10,6 +10,12 @@ A lightweight ambient sound player for macOS. Mix rain, wind, fire, ocean, birds
 
 ## Download / 下載
 
+> **Mac App Store version coming soon / Mac App Store 版本即將上架**
+
+Until then, download the DMG directly from the Releases page:
+
+目前可從 Releases 頁面直接下載 DMG：
+
 Go to the [Releases page](https://github.com/Olddsun/lull-app/releases/latest) and download:
 
 前往 [Releases 頁面](https://github.com/Olddsun/lull-app/releases/latest) 下載：
@@ -19,9 +25,9 @@ Go to the [Releases page](https://github.com/Olddsun/lull-app/releases/latest) a
 
 ## First time opening / 第一次開啟
 
-Since Lull is not signed with an Apple Developer certificate, macOS may show a security warning on first launch.
+Since Lull is not yet on the Mac App Store, macOS may show a security warning on first launch.
 
-由於 Lull 未經 Apple Developer 憑證簽署，macOS 第一次開啟時可能會顯示安全性警告。
+由於 Lull 尚未上架 Mac App Store，macOS 第一次開啟時可能會顯示安全性警告。
 
 1. Open **System Settings** / 開啟**系統設定**
 2. Go to **Privacy & Security** / 前往**隱私權與安全性**

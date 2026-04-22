@@ -1,6 +1,5 @@
-const { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage, dialog, shell } = require('electron')
+const { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage } = require('electron')
 const path = require('path')
-const https = require('https')
 
 app.setName('Lull')
 app.commandLine.appendSwitch('disable-features', 'HardwareMediaKeyHandling')
@@ -90,8 +89,9 @@ function createWindow() {
     frame: false,
     transparent: true,
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false
+      nodeIntegration: false,
+      contextIsolation: true,
+      preload: path.join(__dirname, 'preload.js')
     },
     vibrancy: 'hud',
     visualEffectState: 'active',
@@ -114,41 +114,10 @@ function createWindow() {
   })
 }
 
-function checkForUpdates() {
-  const options = {
-    hostname: 'api.github.com',
-    path: '/repos/Olddsun/lull-app/releases/latest',
-    headers: { 'User-Agent': 'Lull-App' }
-  }
-  https.get(options, (res) => {
-    let data = ''
-    res.on('data', chunk => data += chunk)
-    res.on('end', () => {
-      try {
-        const latest = JSON.parse(data).tag_name.replace(/^v/, '')
-        const current = app.getVersion()
-        if (latest !== current) {
-          dialog.showMessageBox({
-            type: 'info',
-            title: 'Lull 有新版本',
-            message: `新版本 v${latest} 已發布（目前 v${current}）`,
-            detail: '點擊「下載」前往 GitHub 下載最新版本。',
-            buttons: ['下載', '稍後']
-          }).then(({ response }) => {
-            if (response === 0) shell.openExternal('https://github.com/Olddsun/lull-app/releases/latest')
-          })
-        }
-      } catch (_) {}
-    })
-  }).on('error', () => {})
-}
-
 app.whenReady().then(() => {
   createWindow()
   createTray()
   app.dock.setIcon(path.join(__dirname, 'dock-icon.png'))
-
-  checkForUpdates()
 })
 
 app.on('before-quit', () => {
