@@ -1,8 +1,7 @@
-const { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage } = require('electron')
+const { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage, dialog } = require('electron')
 const path = require('path')
 
 app.setName('Lull')
-app.commandLine.appendSwitch('disable-features', 'HardwareMediaKeyHandling')
 
 let mainWindow
 let tray
@@ -100,7 +99,6 @@ function createWindow() {
   })
 
   mainWindow.loadFile('index.html')
-  mainWindow.setVisibleOnAllWorkspaces(true)
 
   mainWindow.on('close', (e) => {
     if (!app.isQuitting) {
@@ -145,6 +143,29 @@ ipcMain.on('close-app', () => {
 
 ipcMain.on('minimize-app', () => {
   mainWindow.minimize()
+})
+
+// 開啟音效檔案選擇器
+ipcMain.handle('open-file-dialog', async () => {
+  const result = await dialog.showOpenDialog(mainWindow, {
+    properties: ['openFile'],
+    filters: [{ name: 'Audio', extensions: ['mp3', 'wav', 'ogg', 'm4a'] }]
+  })
+  if (!result.canceled && result.filePaths.length > 0) {
+    return result.filePaths[0]
+  }
+  return null
+})
+
+// IAP placeholder — 之後換成真實 inAppPurchase API
+ipcMain.on('trigger-purchase', () => {
+  // TODO: 串接 Apple inAppPurchase API
+  // 購買成功後送 unlock-pro 回 renderer
+  // mainWindow.webContents.send('unlock-pro')
+})
+
+ipcMain.on('restore-purchase', () => {
+  // TODO: 串接 Apple inAppPurchase restoreCompletedTransactions
 })
 
 ipcMain.on('resize-to-content', (event, contentHeight) => {

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="app-wrapper">
+<div class="app-wrapper" style="position:relative">
 
   <!-- Title bar -->
   <div class="titlebar" id="dragArea">
@@ -138,6 +138,23 @@
 
     </div><!-- /sounds -->
 
+    <!-- My Sounds -->
+    <div class="divider"></div>
+    <div class="my-sounds" id="mySoundsSection">
+      <div class="my-sounds-header">
+        <span class="section-label" id="mySoundsLabel">My Sounds</span>
+        <button class="add-sound-btn" id="addSoundBtn" title="Import audio file">
+          <svg viewBox="0 0 10 10" fill="none" stroke-width="1.6" stroke-linecap="round">
+            <line x1="5" y1="1.5" x2="5" y2="8.5"/>
+            <line x1="1.5" y1="5" x2="8.5" y2="5"/>
+          </svg>
+        </button>
+      </div>
+      <div class="my-sounds-list" id="mySoundsList">
+        <div class="empty-sounds" id="emptySounds">Import .mp3 to mix your own</div>
+      </div>
+    </div>
+
     <!-- Divider -->
     <div class="divider"></div>
 
@@ -154,6 +171,19 @@
 
   </div><!-- /container -->
 </div><!-- /app-wrapper -->
+
+<!-- Pro upgrade sheet -->
+<div class="pro-sheet" id="proSheet">
+  <button class="pro-sheet-close" id="proSheetClose">✕</button>
+  <div class="pro-glyph">✦</div>
+  <div class="pro-title">Lull Pro</div>
+  <ul class="pro-list">
+    <li>Scenes &amp; Auto mode</li>
+    <li>Import custom sounds</li>
+  </ul>
+  <button class="pro-buy-btn" id="proBuyBtn">Unlock — $2.99</button>
+  <button class="pro-restore-btn" id="proRestoreBtn">Restore Purchase</button>
+</div>
 
 <script src="renderer.js"></script>
 </body>

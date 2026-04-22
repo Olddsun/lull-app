@@ -37,7 +37,13 @@
     "mas": {
       "entitlements": "entitlements.mas.plist",
       "entitlementsInherit": "entitlements.mas.inherit.plist",
-      "hardenedRuntime": false
+      "hardenedRuntime": false,
+      "extraResources": [
+        {
+          "from": "PrivacyInfo.xcprivacy",
+          "to": "PrivacyInfo.xcprivacy"
+        }
+      ]
     }
   }
 }

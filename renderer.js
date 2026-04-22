@@ -1,6 +1,161 @@
 const ipc = window.electronAPI
 
-// 音效設定
+// ── Pro 狀態 ──
+let isPro = localStorage.getItem('lull_pro') === 'true'
+
+function applyProState() {
+  const autoLabel = document.querySelector('.auto-toggle')
+  const autoBox   = document.getElementById('autoMode')
+  const autoSpan  = autoLabel.querySelector('span')
+
+  if (isPro) {
+    autoLabel.classList.remove('pro-locked')
+    autoBox.disabled = false
+    document.querySelectorAll('.lock-badge').forEach(el => el.remove())
+  } else {
+    autoLabel.classList.add('pro-locked')
+    autoBox.disabled = true
+    addLockBadge(autoSpan)
+  }
+}
+
+function addLockBadge(el) {
+  if (!el || el.querySelector('.lock-badge')) return
+  const badge = document.createElement('span')
+  badge.className = 'lock-badge'
+  badge.innerHTML = `<svg viewBox="0 0 10 12" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="5" width="7" height="6" rx="1.5"/><path d="M3 5V3.5a2 2 0 0 1 4 0V5"/></svg>`
+  el.appendChild(badge)
+}
+
+function showProSheet() {
+  document.getElementById('proSheet').classList.add('visible')
+}
+
+function hideProSheet() {
+  document.getElementById('proSheet').classList.remove('visible')
+}
+
+function unlockPro() {
+  isPro = true
+  localStorage.setItem('lull_pro', 'true')
+  applyProState()
+  hideProSheet()
+}
+
+// ── 自訂音效 ──
+let customSounds = JSON.parse(localStorage.getItem('lull_custom_sounds') || '[]')
+const customAudioElements = {}
+
+function saveCustomSounds() {
+  localStorage.setItem('lull_custom_sounds', JSON.stringify(customSounds))
+}
+
+function shortName(filePath) {
+  const base = filePath.split('/').pop().split('\\').pop()
+  const noExt = base.replace(/\.[^/.]+$/, '')
+  return noExt.length > 8 ? noExt.slice(0, 7) + '…' : noExt
+}
+
+function createCustomSoundRow(sound) {
+  const row = document.createElement('div')
+  row.className = 'sound-row custom-sound-row'
+  row.dataset.customId = sound.id
+  row.innerHTML = `
+    <span class="sound-icon">
+      <svg viewBox="0 0 12 12" fill="none" stroke-width="1.4" stroke-linecap="round">
+        <path d="M1 6 L2.5 3.5 L4 7.5 L5.5 4 L7 7 L8.5 5 L10 6"/>
+      </svg>
+    </span>
+    <span class="custom-sound-name" title="${sound.name}">${shortName(sound.path)}</span>
+    <div class="slider-wrap">
+      <div class="slider-track-bg"></div>
+      <div class="slider-fill" id="cs-${sound.id}-fill" style="width:50%"></div>
+      <input type="range" class="slider" id="cs-${sound.id}-slider" min="0" max="100" value="50">
+    </div>
+    <span class="vol-num" id="cs-${sound.id}-vol">50</span>
+    <button class="delete-sound-btn" title="Remove" data-id="${sound.id}">✕</button>
+  `
+
+  // 建立 Audio
+  const audio = new Audio()
+  audio.src = sound.path
+  audio.loop = true
+  audio.volume = 0.5
+  customAudioElements[sound.id] = audio
+
+  // 滑桿事件
+  const slider = row.querySelector(`#cs-${sound.id}-slider`)
+  const volNum = row.querySelector(`#cs-${sound.id}-vol`)
+  const fill   = row.querySelector(`#cs-${sound.id}-fill`)
+  slider.addEventListener('input', () => {
+    const val = parseInt(slider.value)
+    volNum.textContent = val
+    fill.style.width = val + '%'
+    audio.volume = val / 100
+    if (isPlaying && val > 0) audio.play().catch(() => {})
+    else if (val === 0) audio.pause()
+  })
+
+  // 刪除按鈕
+  row.querySelector('.delete-sound-btn').addEventListener('click', () => {
+    removeCustomSound(sound.id)
+  })
+
+  return row
+}
+
+function renderCustomSounds() {
+  const list   = document.getElementById('mySoundsList')
+  const empty  = document.getElementById('emptySounds')
+  // 清除舊的 rows（保留 empty state）
+  list.querySelectorAll('.custom-sound-row').forEach(el => el.remove())
+
+  if (customSounds.length === 0) {
+    empty.style.display = 'block'
+  } else {
+    empty.style.display = 'none'
+    customSounds.forEach(sound => {
+      list.appendChild(createCustomSoundRow(sound))
+    })
+  }
+  // 重新計算視窗高度
+  setTimeout(() => ipc.send('resize-to-content', document.body.scrollHeight), 0)
+}
+
+function addCustomSound(filePath) {
+  const id = Date.now().toString()
+  const name = filePath.split('/').pop().split('\\').pop()
+  customSounds.push({ id, name, path: filePath })
+  saveCustomSounds()
+  renderCustomSounds()
+}
+
+function removeCustomSound(id) {
+  if (customAudioElements[id]) {
+    customAudioElements[id].pause()
+    delete customAudioElements[id]
+  }
+  customSounds = customSounds.filter(s => s.id !== id)
+  saveCustomSounds()
+  renderCustomSounds()
+}
+
+function applyProStateMysounds() {
+  const section = document.getElementById('mySoundsSection')
+  const addBtn  = document.getElementById('addSoundBtn')
+  const label   = document.getElementById('mySoundsLabel')
+  if (isPro) {
+    section.classList.remove('pro-locked')
+    addBtn.disabled = false
+    document.querySelectorAll('#mySoundsLabel .lock-badge').forEach(el => el.remove())
+  } else {
+    section.classList.add('pro-locked')
+    addBtn.disabled = true
+    addLockBadge(label)
+  }
+}
+
+// ── 音效設定
 const soundConfig = {
   rain:  { file: 'rain.mp3',   defaultVol: 0.6 },
   wind:  { file: 'wind.mp3',   defaultVol: 0.3 },
@@ -48,11 +203,22 @@ function togglePlay() {
         audio.play().catch(() => {})
       }
     }
+    for (const [id, audio] of Object.entries(customAudioElements)) {
+      const slider = document.getElementById(`cs-${id}-slider`)
+      const vol = slider ? parseInt(slider.value) : 0
+      if (vol > 0) {
+        audio.volume = vol / 100
+        audio.play().catch(() => {})
+      }
+    }
     btn.textContent = '⏸'
     btn.classList.add('playing')
     if (label) label.textContent = 'Playing'
   } else {
     for (const audio of Object.values(audioElements)) {
+      audio.pause()
+    }
+    for (const audio of Object.values(customAudioElements)) {
       audio.pause()
     }
     btn.textContent = '▶'
@@ -171,6 +337,8 @@ document.addEventListener('DOMContentLoaded', () => {
       slider.addEventListener('input', () => {
         const val = parseInt(slider.value)
         if (volNum) volNum.textContent = val
+        const fill = document.getElementById(`${key}-fill`)
+        if (fill) fill.style.width = val + '%'
         if (audioElements[key]) {
           audioElements[key].volume = val / 100
           if (isPlaying && val > 0) {
@@ -197,5 +365,48 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       stopAutoMode()
     }
+  })
+
+  // Pro 狀態初始化
+  applyProState()
+  applyProStateMysounds()
+  renderCustomSounds()
+
+  // 鎖定功能點擊 → 顯示 Pro sheet
+  document.querySelector('.auto-toggle').addEventListener('click', (e) => {
+    if (!isPro) {
+      e.preventDefault()
+      showProSheet()
+    }
+  })
+
+
+  // Pro sheet 按鈕
+  document.getElementById('proSheetClose').addEventListener('click', hideProSheet)
+
+  document.getElementById('proBuyBtn').addEventListener('click', () => {
+    ipc.send('trigger-purchase')
+  })
+
+  document.getElementById('proRestoreBtn').addEventListener('click', () => {
+    ipc.send('restore-purchase')
+  })
+
+  // 購買成功（main.js 觸發）
+  ipc.on('unlock-pro', () => {
+    unlockPro()
+    applyProStateMysounds()
+  })
+
+  // My Sounds — 匯入按鈕
+  document.getElementById('addSoundBtn').addEventListener('click', async () => {
+    if (!isPro) { showProSheet(); return }
+    const filePath = await ipc.invoke('open-file-dialog')
+    if (filePath) addCustomSound(filePath)
+  })
+
+  // My Sounds — 鎖定點擊
+  document.getElementById('mySoundsSection').addEventListener('click', (e) => {
+    if (!isPro) showProSheet()
   })
 })
