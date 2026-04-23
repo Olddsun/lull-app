@@ -2,13 +2,13 @@ const { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage, dialog, inAppPurch
 const path = require('path')
 const fs = require('fs')
 
-app.setName('Lull')
+app.setName('Shh')
 
 // Dev: hot reload on file change
 try { require('electron-reloader')(module) } catch {}
 
 // ── IAP ──────────────────────────────────────────────
-const PRODUCT_ID = 'com.olddsun.lull.pro'
+const PRODUCT_ID = 'com.olddsun.shh.pro'
 
 // 在 MAS 環境下，啟動時就開始監聽交易更新
 // process.mas 只在 Mac App Store 建置時為 true
@@ -86,7 +86,7 @@ function buildTrayMenu() {
     },
     { type: 'separator' },
     {
-      label: 'Quit Lull',
+      label: 'Quit Shh',
       accelerator: 'CmdOrCtrl+Q',
       click: () => {
         app.isQuitting = true
@@ -104,7 +104,7 @@ function createTray() {
   const icon = nativeImage.createFromPath(path.join(__dirname, 'icon@2x.png'))
   icon.setTemplateImage(true)
   tray = new Tray(icon)
-  tray.setToolTip('Lull')
+  tray.setToolTip('Shh')
   tray.setContextMenu(buildTrayMenu())
 
   tray.on('click', () => {

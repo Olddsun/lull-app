@@ -597,19 +597,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isPro) showProSheet()
   })
 
-  // Dev: Cmd+Shift+P 切換 Pro 狀態
-  document.addEventListener('keydown', (e) => {
-    if (e.metaKey && e.shiftKey && e.code === 'KeyP') {
-      if (isPro) {
-        isPro = false
-        localStorage.removeItem('lull_pro')
-      } else {
-        isPro = true
-        localStorage.setItem('lull_pro', 'true')
+  // Dev: Cmd+Shift+P 切換 Pro 狀態（非 MAS 建置才有效）
+  if (!window.electronAPI.isMas) {
+    document.addEventListener('keydown', (e) => {
+      if (e.metaKey && e.shiftKey && e.code === 'KeyP') {
+        if (isPro) {
+          isPro = false
+          localStorage.removeItem('lull_pro')
+        } else {
+          isPro = true
+          localStorage.setItem('lull_pro', 'true')
+        }
+        applyProState()
+        applyProStateMysounds()
+        console.log('Pro:', isPro)
       }
-      applyProState()
-      applyProStateMysounds()
-      console.log('Pro:', isPro)
-    }
-  })
+    })
+  }
 })

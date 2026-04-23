@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lull — Ambient Sound Player</title>
+  <title>Shh — Ambient Sound Player</title>
   <meta name="description" content="A calm ambient sound player for macOS and iPhone. Mix six sounds, set a sleep timer, and let Auto mode do the rest." />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -185,7 +185,7 @@
 
 <!-- ── Sticky CTA bar (mobile only) ── -->
 <div class="sticky-cta" id="stickyCta">
-  <a href="https://github.com/Olddsun/lull-app/releases/latest"
+  <a href="https://github.com/Olddsun/shh-app/releases/latest"
      class="flex items-center justify-center gap-2 w-full min-h-[44px] bg-accent active:bg-accent-dim text-white font-medium rounded-xl text-sm transition-colors"
      data-en="Download for macOS" data-zh="下載 macOS 版本">
   </a>
@@ -197,8 +197,8 @@
 
     <!-- Logo -->
     <div class="flex items-center gap-2">
-      <img src="nav-logo.png" alt="Lull" class="h-7 w-7 rounded-lg" />
-      <span class="font-serif text-base font-medium tracking-wide text-warm">Lull</span>
+      <img src="nav-logo.png" alt="Shh" class="h-7 w-7 rounded-lg" />
+      <span class="font-serif text-base font-medium tracking-wide text-warm">Shh</span>
     </div>
 
     <!-- Right: lang toggle + GitHub (GitHub text hidden on mobile) -->
@@ -208,7 +208,7 @@
         <span class="text-muted">/</span>
         <button id="lang-zh" class="lang-btn min-h-[44px] min-w-[36px] flex items-center justify-center rounded" onclick="setLang('zh')">中文</button>
       </div>
-      <a href="https://github.com/Olddsun/lull-app" target="_blank"
+      <a href="https://github.com/Olddsun/shh-app" target="_blank"
          class="flex items-center gap-1.5 text-muted hover:text-warm transition-colors min-h-[44px] min-w-[44px] justify-center md:justify-start md:min-w-0 cursor-pointer">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
         <span class="hidden md:inline text-sm">GitHub</span>
@@ -226,8 +226,8 @@
       <!-- Text block -->
       <div class="flex-1 w-full max-w-lg">
         <div class="flex items-center gap-3 mb-7">
-          <img src="logo.png" alt="Lull" class="w-12 h-12 md:w-14 md:h-14 rounded-2xl" />
-          <span class="font-serif text-xl text-warm tracking-wide">Lull</span>
+          <img src="logo.png" alt="Shh" class="w-12 h-12 md:w-14 md:h-14 rounded-2xl" />
+          <span class="font-serif text-xl text-warm tracking-wide">Shh</span>
         </div>
 
         <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-medium leading-tight text-warm mb-5"
@@ -243,7 +243,7 @@
 
         <!-- CTA buttons — hidden on mobile (sticky bar handles it) -->
         <div class="hidden md:flex flex-wrap items-center gap-3 mb-5">
-          <a href="https://github.com/Olddsun/lull-app/releases/latest"
+          <a href="https://github.com/Olddsun/shh-app/releases/latest"
              class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dim text-white font-medium px-5 min-h-[44px] rounded-xl text-sm transition-colors cursor-pointer"
              data-en="Download for macOS" data-zh="下載 macOS 版本">
           </a>
@@ -379,8 +379,8 @@
         <h3 class="font-serif text-xl md:text-2xl font-medium text-warm mb-1"
             data-en="Auto Mode" data-zh="Auto 模式"></h3>
         <p class="text-warm-muted text-sm leading-relaxed font-light mb-5"
-           data-en="Lull crossfades between scenes every 45–90 seconds. Your soundscape stays alive."
-           data-zh="Lull 每 45–90 秒自動漸變場景，讓環境音保持新鮮感。"></p>
+           data-en="Shh crossfades between scenes every 45–90 seconds. Your soundscape stays alive."
+           data-zh="Shh 每 45–90 秒自動漸變場景，讓環境音保持新鮮感。"></p>
         <div class="flex items-end gap-1.5 h-10">
           <div class="wave-bar flex-1 rounded-sm" style="background:#5A8F6A;opacity:.9;min-height:4px"></div>
           <div class="wave-bar flex-1 rounded-sm" style="background:#5A8F6A;opacity:.7;min-height:4px"></div>
@@ -444,7 +444,7 @@
   <div class="pro-card-glow rounded-2xl md:rounded-3xl text-center"
        style="border:1px solid #1E3A24; background:#0D1512; padding:32px 28px; padding-bottom:36px;">
     <div class="text-2xl mb-4" style="color:#5A8F6A">✦</div>
-    <h2 class="font-serif text-2xl md:text-3xl font-medium text-warm mb-1">Lull Pro</h2>
+    <h2 class="font-serif text-2xl md:text-3xl font-medium text-warm mb-1">Shh Pro</h2>
     <div class="text-3xl md:text-4xl font-semibold text-warm mt-4 mb-1" style="letter-spacing:-0.03em">$2.99</div>
     <p class="text-muted text-sm font-light mb-7"
        data-en="One-time purchase. No subscription." data-zh="買斷制，不收月費。"></p>
@@ -476,8 +476,8 @@
   <h2 class="font-serif text-lg md:text-xl font-medium text-warm mb-3"
       data-en="First time opening on Mac" data-zh="Mac 版第一次開啟說明"></h2>
   <p class="text-warm-muted text-sm font-light leading-relaxed mb-4"
-     data-en="Since Lull is not yet on the Mac App Store, macOS may show a security warning on first launch."
-     data-zh="由於 Lull 尚未上架 Mac App Store，macOS 第一次開啟時可能顯示安全性警告。"></p>
+     data-en="Since Shh is not yet on the Mac App Store, macOS may show a security warning on first launch."
+     data-zh="由於 Shh 尚未上架 Mac App Store，macOS 第一次開啟時可能顯示安全性警告。"></p>
   <ol class="inline-flex flex-col gap-2 text-left text-sm font-light text-warm" style="list-style:none">
     <li data-en='<span style="color:#5A8F6A;font-weight:600;">1.</span> Open <strong>System Settings</strong>'
         data-zh='<span style="color:#5A8F6A;font-weight:600;">1.</span> 開啟<strong>系統設定</strong>'></li>
@@ -487,19 +487,19 @@
         data-zh='<span style="color:#5A8F6A;font-weight:600;">3.</span> 往下滑，點擊<strong>仍要開啟</strong>'></li>
   </ol>
   <p class="text-muted text-xs font-light mt-4"
-     data-en="One-time step · Lull does not collect any data."
-     data-zh="此步驟只需操作一次 · Lull 不收集任何資料。"></p>
+     data-en="One-time step · Shh does not collect any data."
+     data-zh="此步驟只需操作一次 · Shh 不收集任何資料。"></p>
 </section>
 
 <!-- ── Footer ─────────────────────────────────────── -->
 <footer id="footer" style="border-top:1px solid #1E1E26;" class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10">
   <div class="flex flex-col sm:flex-row items-center justify-between gap-5">
     <div class="flex items-center gap-2">
-      <img src="nav-logo.png" alt="Lull" class="h-6 w-6 rounded-lg opacity-50" />
+      <img src="nav-logo.png" alt="Shh" class="h-6 w-6 rounded-lg opacity-50" />
       <span class="text-muted text-sm font-light">
         <span data-en="Built with care · Open Source" data-zh="用心製作 · 開放原始碼"></span>
         &nbsp;·&nbsp;
-        <a href="https://github.com/Olddsun/lull-app" target="_blank"
+        <a href="https://github.com/Olddsun/shh-app" target="_blank"
            class="hover:text-warm transition-colors" style="color:#5A8F6A">GitHub</a>
         &nbsp;·&nbsp;
         <a href="privacy.html"
