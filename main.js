@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage, dialog } = require('electron')
+const { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage, dialog, inAppPurchase } = require('electron')
 const path = require('path')
 const fs = require('fs')
 
@@ -6,6 +6,39 @@ app.setName('Lull')
 
 // Dev: hot reload on file change
 try { require('electron-reloader')(module) } catch {}
+
+// ── IAP ──────────────────────────────────────────────
+const PRODUCT_ID = 'com.olddsun.lull.pro'
+
+// 在 MAS 環境下，啟動時就開始監聽交易更新
+// process.mas 只在 Mac App Store 建置時為 true
+if (process.mas) {
+  inAppPurchase.on('transactions-updated', (_event, transactions) => {
+    for (const t of transactions) {
+      switch (t.transactionState) {
+        case 'purchasing':
+          // 購買進行中，等待
+          break
+
+        case 'purchased':
+        case 'restored':
+          // 購買成功或恢復 → 解鎖 Pro
+          if (mainWindow) mainWindow.webContents.send('unlock-pro')
+          inAppPurchase.finishAllTransactions()
+          break
+
+        case 'failed':
+          // 取消或失敗 → 結束交易，不做任何事
+          inAppPurchase.finishAllTransactions()
+          break
+
+        case 'deferred':
+          // 等待家長核准，暫不處理
+          break
+      }
+    }
+  })
+}
 
 
 let mainWindow
@@ -178,15 +211,32 @@ ipcMain.handle('delete-custom-sound', (event, storedName) => {
   if (fs.existsSync(filePath)) fs.unlinkSync(filePath)
 })
 
-// IAP placeholder — 之後換成真實 inAppPurchase API
-ipcMain.on('trigger-purchase', () => {
-  // TODO: 串接 Apple inAppPurchase API
-  // 購買成功後送 unlock-pro 回 renderer
-  // mainWindow.webContents.send('unlock-pro')
+// IAP：觸發購買
+ipcMain.on('trigger-purchase', async () => {
+  // 非 MAS 建置（開發模式）不處理
+  if (!process.mas) return
+  if (!inAppPurchase.canMakePayments()) return
+
+  try {
+    const products = await inAppPurchase.getProducts([PRODUCT_ID])
+    if (!products || products.length === 0) {
+      console.error('[IAP] Product not found:', PRODUCT_ID)
+      return
+    }
+    // 發起購買，結果透過 transactions-updated 事件回傳
+    await inAppPurchase.purchaseProduct(PRODUCT_ID, 1)
+  } catch (err) {
+    console.error('[IAP] Purchase error:', err)
+  }
 })
 
+// IAP：恢復購買（使用者重裝 app 時使用）
 ipcMain.on('restore-purchase', () => {
-  // TODO: 串接 Apple inAppPurchase restoreCompletedTransactions
+  if (!process.mas) return
+  if (inAppPurchase.canMakePayments()) {
+    // 恢復結果同樣透過 transactions-updated 事件回傳
+    inAppPurchase.restoreCompletedTransactions()
+  }
 })
 
 ipcMain.on('resize-to-content', (event, contentHeight) => {
