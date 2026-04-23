@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Lull</title>
+  <meta name="description" content="Lull privacy policy. Lull does not collect any personal data." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface:         '#09090B',
+            border:          '#1E1E26',
+            muted:           '#52525B',
+            warm:            '#F0EBE1',
+            'warm-muted':    '#9C9589',
+            accent:          '#5A8F6A',
+          },
+          fontFamily: {
+            serif: ['Lora', 'Georgia', 'serif'],
+            sans:  ['Raleway', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    body { background-color: #09090B; }
+    .nav-glass {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(9,9,11,0.85);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .lang-btn { transition: color 0.15s; }
+    .lang-btn.active { color: #5A8F6A; font-weight: 600; }
+    .prose h2 { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 500; color: #F0EBE1; margin-top: 2.5rem; margin-bottom: 0.6rem; }
+    .prose p, .prose li { font-size: 0.9rem; color: #9C9589; line-height: 1.8; font-weight: 300; }
+    .prose ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+    .prose ul li::before { content: "—"; color: #5A8F6A; margin-right: 0.5rem; }
+    .prose a { color: #5A8F6A; text-decoration: none; }
+    .prose a:hover { text-decoration: underline; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+
+<body class="font-sans text-warm antialiased">
+
+<!-- Nav -->
+<nav class="nav-glass fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-3xl mx-auto px-4 md:px-6 h-14 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2 text-warm-muted hover:text-warm transition-colors">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9,2 4,7 9,12"/>
+      </svg>
+      <span class="text-sm font-light" data-en="Back" data-zh="返回"></span>
+    </a>
+    <div class="flex items-center gap-1 text-xs text-muted">
+      <button id="lang-en" class="lang-btn active min-h-[44px] min-w-[36px] flex items-center justify-center rounded" onclick="setLang('en')">EN</button>
+      <span>/</span>
+      <button id="lang-zh" class="lang-btn min-h-[44px] min-w-[36px] flex items-center justify-center rounded" onclick="setLang('zh')">中文</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Content -->
+<main class="max-w-3xl mx-auto px-4 md:px-6 pt-28 pb-24">
+
+  <!-- Header -->
+  <div class="mb-12">
+    <p class="text-xs text-accent font-medium tracking-widest uppercase mb-4"
+       data-en="Legal" data-zh="法律聲明"></p>
+    <h1 class="font-serif text-3xl md:text-4xl font-medium text-warm mb-3"
+        style="letter-spacing:-0.02em"
+        data-en="Privacy Policy" data-zh="隱私權政策"></h1>
+    <p class="text-sm text-muted font-light"
+       data-en="Last updated: April 23, 2026" data-zh="最後更新：2026 年 4 月 23 日"></p>
+  </div>
+
+  <!-- Short summary -->
+  <div style="background:#0D1512; border:1px solid #1E3A24; border-radius:14px; padding:20px 22px;" class="mb-10">
+    <p class="text-sm font-medium" style="color:#5A8F6A; margin-bottom:4px;"
+       data-en="Summary" data-zh="摘要"></p>
+    <p class="text-sm font-light leading-relaxed" style="color:#9C9589;"
+       data-en="Lull does not collect, store, or share any personal data. Everything stays on your device."
+       data-zh="Lull 不收集、儲存或分享任何個人資料。所有內容都留在你的裝置上。"></p>
+  </div>
+
+  <div class="prose" style="border-top:1px solid #1E1E26; padding-top:2rem;">
+
+    <!-- 1 -->
+    <h2 data-en="1. Information We Collect" data-zh="1. 我們收集的資訊"></h2>
+    <p data-en="We do not collect any personal information. Lull has no account system, no login, and does not communicate with any external server."
+       data-zh="我們不收集任何個人資訊。Lull 沒有帳號系統、不需要登入，也不與任何外部伺服器通訊。"></p>
+
+    <!-- 2 -->
+    <h2 data-en="2. Data Stored Locally on Your Device" data-zh="2. 儲存在您裝置上的資料"></h2>
+    <p data-en="Lull saves the following data locally using your device's storage. This data never leaves your device:"
+       data-zh="Lull 使用裝置的本地儲存功能，將以下資料保存在您的裝置上。這些資料不會離開您的裝置："></p>
+    <ul>
+      <li data-en="Volume levels for each sound source" data-zh="每個音效的音量設定"></li>
+      <li data-en="Active scene selection" data-zh="已選擇的場景"></li>
+      <li data-en="Custom scene names and mixes you create" data-zh="您自訂的場景名稱與混音設定"></li>
+      <li data-en="Pro unlock status" data-zh="Pro 解鎖狀態"></li>
+      <li data-en="Imported custom sound file references (macOS only)" data-zh="匯入的自訂音效檔案參照（僅限 macOS）"></li>
+    </ul>
+
+    <!-- 3 -->
+    <h2 data-en="3. Custom Sound Files" data-zh="3. 自訂音效檔案"></h2>
+    <p data-en="When you import an audio file (macOS), Lull copies it to your local app data folder. The file is stored only on your device and is never uploaded anywhere."
+       data-zh="當您在 macOS 匯入音訊檔案時，Lull 會將其複製到您裝置上的本地應用程式資料夾。該檔案僅儲存在您的裝置上，不會上傳至任何地方。"></p>
+
+    <!-- 4 -->
+    <h2 data-en="4. Microphone" data-zh="4. 麥克風"></h2>
+    <p data-en="Lull does not use the microphone. The app only plays audio — it does not record."
+       data-zh="Lull 不使用麥克風。本應用程式只播放音效，不進行任何錄音。"></p>
+
+    <!-- 5 -->
+    <h2 data-en="5. Analytics &amp; Tracking" data-zh="5. 分析與追蹤"></h2>
+    <p data-en="Lull does not use any analytics tools, crash reporters, or third-party tracking SDKs."
+       data-zh="Lull 不使用任何分析工具、崩潰回報工具或第三方追蹤 SDK。"></p>
+
+    <!-- 6 -->
+    <h2 data-en="6. Third-Party Services" data-zh="6. 第三方服務"></h2>
+    <p data-en="Lull does not integrate with any third-party services. In-app purchases (when available) are processed entirely by Apple through the App Store — we do not receive your payment details."
+       data-zh="Lull 不整合任何第三方服務。應用程式內購買（開放後）完全透過 Apple 的 App Store 處理，我們不會取得您的付款資訊。"></p>
+
+    <!-- 7 -->
+    <h2 data-en="7. Children's Privacy" data-zh="7. 兒童隱私"></h2>
+    <p data-en="Lull does not collect information from anyone, including children under 13. Since we collect no data at all, there is nothing to delete or request."
+       data-zh="Lull 不向任何人（包括 13 歲以下兒童）收集資訊。由於我們完全不收集資料，因此也沒有需要刪除或申請查閱的內容。"></p>
+
+    <!-- 8 -->
+    <h2 data-en="8. Changes to This Policy" data-zh="8. 本政策的更新"></h2>
+    <p data-en="If this policy changes, we will update the date at the top of this page. We encourage you to review this page periodically."
+       data-zh="若本政策有所更新，我們會更新本頁頂部的日期。建議您定期查閱本頁面。"></p>
+
+    <!-- 9 -->
+    <h2 data-en="9. Contact" data-zh="9. 聯絡方式"></h2>
+    <p data-en='If you have any questions, please open an issue on <a href="https://github.com/Olddsun/lull-app" target="_blank">GitHub</a>.'
+       data-zh='如有任何疑問，請至 <a href="https://github.com/Olddsun/lull-app" target="_blank">GitHub</a> 提出 issue。'></p>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer style="border-top:1px solid #1E1E26;" class="max-w-3xl mx-auto px-4 md:px-6 py-8">
+  <div class="flex items-center justify-between gap-4">
+    <span class="text-xs text-muted font-light">
+      © 2026 Lull ·
+      <a href="index.html" class="hover:text-warm transition-colors" style="color:#5A8F6A"
+         data-en="Home" data-zh="首頁"></a>
+    </span>
+    <span class="text-xs text-muted font-light"
+          data-en="Lull does not collect your data." data-zh="Lull 不收集您的資料。"></span>
+  </div>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.innerHTML = el.getAttribute('data-' + lang);
+    });
+    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+    document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+  }
+  setLang('en');
+</script>
+
+</body>
+</html>
