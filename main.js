@@ -1,7 +1,12 @@
 const { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage, dialog } = require('electron')
 const path = require('path')
+const fs = require('fs')
 
 app.setName('Lull')
+
+// Dev: hot reload on file change
+try { require('electron-reloader')(module) } catch {}
+
 
 let mainWindow
 let tray
@@ -145,16 +150,32 @@ ipcMain.on('minimize-app', () => {
   mainWindow.minimize()
 })
 
-// 開啟音效檔案選擇器
+// 自訂音效：沙盒安全的檔案存取
+const customSoundsDir = path.join(app.getPath('userData'), 'custom-sounds')
+
+ipcMain.handle('get-custom-sounds-dir', () => customSoundsDir)
+
 ipcMain.handle('open-file-dialog', async () => {
   const result = await dialog.showOpenDialog(mainWindow, {
     properties: ['openFile'],
     filters: [{ name: 'Audio', extensions: ['mp3', 'wav', 'ogg', 'm4a'] }]
   })
   if (!result.canceled && result.filePaths.length > 0) {
-    return result.filePaths[0]
+    if (!fs.existsSync(customSoundsDir)) {
+      fs.mkdirSync(customSoundsDir, { recursive: true })
+    }
+    const srcPath = result.filePaths[0]
+    const originalName = path.basename(srcPath)
+    const storedName = `${Date.now()}-${originalName}`
+    fs.copyFileSync(srcPath, path.join(customSoundsDir, storedName))
+    return { name: originalName, storedName }
   }
   return null
+})
+
+ipcMain.handle('delete-custom-sound', (event, storedName) => {
+  const filePath = path.join(customSoundsDir, storedName)
+  if (fs.existsSync(filePath)) fs.unlinkSync(filePath)
 })
 
 // IAP placeholder — 之後換成真實 inAppPurchase API

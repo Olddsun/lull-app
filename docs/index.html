@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lull — Ambient Sound Player</title>
+  <meta name="description" content="A calm ambient sound player for macOS and iPhone. Mix rain, wind, fire, waves, birds, and café noise. Sleep timer, auto mode, custom sounds." />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
@@ -19,7 +20,7 @@
         <button id="lang-zh" onclick="setLang('zh')">中文</button>
       </div>
       <a href="https://github.com/Olddsun/lull-app" target="_blank" class="nav-github">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
         GitHub
       </a>
     </div>
@@ -32,18 +33,18 @@
         <img src="logo.png" alt="Lull logo" class="hero-logo" />
         <h1>Lull</h1>
       </div>
-      <p class="tagline" data-en="A lightweight ambient sound player for macOS. Mix rain, wind, fire, ocean, birds, and café noise freely — find your perfect focus environment." data-zh="一款輕量的環境音播放器。自由混合雨聲、風聲、火焰、海浪、鳥鳴、咖啡廳白噪音，打造屬於你的專注空間。"></p>
+      <p class="tagline" data-en="A calm ambient sound player for Mac and iPhone. Mix six sound sources, set a sleep timer, and let Auto mode do the rest." data-zh="專為 Mac 和 iPhone 打造的環境音播放器。自由混合六種音效，設定睡眠定時，或讓 Auto 模式自動幫你切換場景。"></p>
       <div class="hero-buttons">
         <a href="https://github.com/Olddsun/lull-app/releases/latest" class="btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-6 2h12v2H6v-2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M6 11l6 6 6-6"/><path d="M3 20h18"/></svg>
           <span data-en="Download for macOS" data-zh="下載 macOS 版本"></span>
         </a>
-        <a href="https://github.com/Olddsun/lull-app" target="_blank" class="btn-secondary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          <span data-en="Source Code" data-zh="原始碼"></span>
-        </a>
+        <div class="btn-coming">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+          <span data-en="iPhone — coming soon" data-zh="iPhone 版即將推出"></span>
+        </div>
       </div>
-      <p class="version-note" data-en="Free · Open Source · macOS 12+ · Coming soon to Mac App Store" data-zh="免費 · 開放原始碼 · macOS 12+ · 即將上架 Mac App Store"></p>
+      <p class="version-note" data-en="Free · Open Source · macOS 12+ · Coming soon to Mac App Store &amp; App Store" data-zh="免費 · 開放原始碼 · macOS 12+ · 即將上架 Mac App Store 與 App Store"></p>
     </div>
     <div class="hero-media">
       <video src="demo.mov" autoplay muted loop playsinline></video>
@@ -52,51 +53,130 @@
 
   <!-- Features -->
   <section class="features">
-    <h2 data-en="Features" data-zh="功能特色"></h2>
+    <h2 data-en="What's inside" data-zh="功能特色"></h2>
     <div class="feature-grid">
+
+      <!-- Free features -->
       <div class="feature-card">
-        <span class="icon">🎚️</span>
+        <div class="card-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <line x1="3" y1="7" x2="17" y2="7"/>
+            <circle cx="8" cy="7" r="2" fill="currentColor" stroke="none"/>
+            <line x1="3" y1="13" x2="17" y2="13"/>
+            <circle cx="13" cy="13" r="2" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
         <h3 data-en="Mix 6 Sound Sources" data-zh="6 種環境音混音"></h3>
-        <p data-en="Rain, Wind, Birds, Fire, Waves, and Café — adjust each independently." data-zh="雨聲、風聲、鳥鳴、火焰、海浪、咖啡廳，各自獨立調整音量。"></p>
+        <p data-en="Rain, Wind, Birds, Fire, Waves, Café — adjust each volume independently." data-zh="雨聲、風聲、鳥鳴、火焰、海浪、咖啡廳，各自獨立調整音量。"></p>
+        <span class="badge-free" data-en="Free" data-zh="免費"></span>
       </div>
+
       <div class="feature-card">
-        <span class="icon">🌲</span>
+        <div class="card-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 14 Q5 8 10 6 Q15 8 17 14"/>
+            <path d="M7 14 Q8.5 10 10 9 Q11.5 10 13 14"/>
+            <line x1="3" y1="15" x2="17" y2="15"/>
+          </svg>
+        </div>
         <h3 data-en="Quick Scenes" data-zh="快速場景切換"></h3>
-        <p data-en="One click to switch between Forest, Rainy Night, Café, and Beach." data-zh="一鍵切換森林、雨夜、咖啡廳、海灘四種預設場景。"></p>
+        <p data-en="One tap to switch between Forest, Rainy Night, Beach, and Café." data-zh="一鍵切換森林、雨夜、海灘、咖啡廳四種預設場景。"></p>
+        <span class="badge-free" data-en="Free" data-zh="免費"></span>
       </div>
+
       <div class="feature-card">
-        <span class="icon">✨</span>
+        <div class="card-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 3 A7 7 0 1 1 3 10"/>
+            <polyline points="3,6 3,10 7,10"/>
+          </svg>
+        </div>
+        <h3 data-en="Remembers Your Mix" data-zh="記住你的設定"></h3>
+        <p data-en="Your volume settings are saved automatically and restored on next launch." data-zh="音量設定自動儲存，下次開啟自動恢復。"></p>
+        <span class="badge-free" data-en="Free" data-zh="免費"></span>
+      </div>
+
+      <!-- Pro features -->
+      <div class="feature-card feature-card-pro">
+        <div class="card-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="10" cy="10" r="7.5"/>
+            <polyline points="10,6 10,10 13,12"/>
+            <path d="M8 2.5 h4 M10 2.5 v1"/>
+          </svg>
+        </div>
+        <h3 data-en="Sleep Timer" data-zh="睡眠定時器"></h3>
+        <p data-en="Set a 15–60 min countdown. Lull gently fades the audio and stops automatically." data-zh="設定 15–60 分鐘倒數，Lull 自動淡出音效並停止播放。"></p>
+        <span class="badge-pro">Pro</span>
+      </div>
+
+      <div class="feature-card feature-card-pro">
+        <div class="card-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7 L7 7 L9 4 L11 10 L13 7 L17 7"/>
+            <path d="M14 13 L16 11 M16 13 L14 11"/>
+            <path d="M4 13 L6 11 M6 13 L4 11"/>
+          </svg>
+        </div>
         <h3 data-en="Auto Mode" data-zh="自動調整模式"></h3>
-        <p data-en="Let Lull gently shift the mix over time, so you never get bored." data-zh="讓 Lull 自動隨時間微調混音，保持新鮮感。"></p>
+        <p data-en="Lull slowly crossfades between scenes every 45–90 seconds, keeping your soundscape fresh." data-zh="Lull 每隔 45–90 秒自動漸變場景，讓環境音保持新鮮感。"></p>
+        <span class="badge-pro">Pro</span>
       </div>
-      <div class="feature-card">
-        <span class="icon">📌</span>
-        <h3 data-en="Always on Top" data-zh="懸浮視窗"></h3>
-        <p data-en="Keep Lull floating above your workspace, always within reach." data-zh="讓 Lull 懸浮在所有視窗之上，隨時可調整。"></p>
+
+      <div class="feature-card feature-card-pro">
+        <div class="card-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 10 h6 M10 7 v6"/>
+            <circle cx="10" cy="10" r="7.5"/>
+          </svg>
+        </div>
+        <h3 data-en="Import Custom Sounds" data-zh="匯入自訂音效"></h3>
+        <p data-en="Add your own .mp3 files to the mixer. Unlimited imports, same controls as built-in sounds." data-zh="將自己的 .mp3 音檔加入混音台，與內建音效擁有相同的調整功能。"></p>
+        <span class="badge-pro">Pro</span>
       </div>
-      <div class="feature-card">
-        <span class="icon">🔇</span>
-        <h3 data-en="Hide & Keep Playing" data-zh="隱藏視窗繼續播放"></h3>
-        <p data-en="Close the window — music keeps playing quietly in the background." data-zh="關閉視窗後音樂不會停止，安靜在背景繼續運作。"></p>
-      </div>
-      <div class="feature-card">
-        <span class="icon">🖥️</span>
-        <h3 data-en="Menu Bar Control" data-zh="選單列控制"></h3>
-        <p data-en="Play, pause, and adjust settings right from the macOS menu bar." data-zh="直接從 macOS 選單列播放、暫停與調整設定。"></p>
-      </div>
+
+    </div>
+  </section>
+
+  <!-- Pro section -->
+  <section class="pro-section">
+    <div class="pro-card">
+      <div class="pro-glyph">✦</div>
+      <h2 data-en="Lull Pro" data-zh="Lull Pro"></h2>
+      <p class="pro-price">$2.99</p>
+      <p class="pro-desc" data-en="One-time purchase. No subscription." data-zh="買斷制，不收月費。"></p>
+      <ul class="pro-list">
+        <li>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,7 6,11 12,3"/></svg>
+          <span data-en="Sleep timer (15 / 30 / 45 / 60 min)" data-zh="睡眠定時器（15 / 30 / 45 / 60 分鐘）"></span>
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,7 6,11 12,3"/></svg>
+          <span data-en="Auto mode — living soundscape" data-zh="Auto 模式 — 自動切換場景"></span>
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,7 6,11 12,3"/></svg>
+          <span data-en="Import unlimited custom sounds" data-zh="無限匯入自訂音效"></span>
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,7 6,11 12,3"/></svg>
+          <span data-en="Save custom scenes" data-zh="儲存自訂場景"></span>
+        </li>
+      </ul>
+      <p class="pro-coming" data-en="Available on Mac App Store &amp; App Store" data-zh="上架 Mac App Store 與 App Store 後開放購買"></p>
     </div>
   </section>
 
   <!-- Security Note -->
   <section class="security-section">
-    <h2 data-en="First time opening" data-zh="第一次開啟說明"></h2>
-    <p data-en="Since Lull is not yet on the Mac App Store, macOS may show a security warning on first launch." data-zh="由於 Lull 尚未上架 Mac App Store，macOS 第一次開啟時可能會顯示安全性警告。"></p>
+    <h2 data-en="First time opening on Mac" data-zh="Mac 版第一次開啟說明"></h2>
+    <p data-en="Since Lull is not yet on the Mac App Store, macOS may show a security warning on first launch." data-zh="由於 Lull 尚未上架 Mac App Store，macOS 第一次開啟時可能顯示安全性警告。"></p>
     <ol>
       <li data-en="Open <strong>System Settings</strong>" data-zh="開啟<strong>系統設定</strong>"></li>
-      <li data-en="Go to <strong>Privacy & Security</strong>" data-zh="前往<strong>隱私權與安全性</strong>"></li>
+      <li data-en="Go to <strong>Privacy &amp; Security</strong>" data-zh="前往<strong>隱私權與安全性</strong>"></li>
       <li data-en="Scroll down and click <strong>Open Anyway</strong>" data-zh="往下滑，點擊<strong>仍要開啟</strong>"></li>
     </ol>
-    <p class="security-sub" data-en="This is a one-time step. Lull contains no malware." data-zh="此步驟只需操作一次，Lull 不含任何惡意程式。"></p>
+    <p class="security-sub" data-en="One-time step. Lull does not collect any data." data-zh="此步驟只需操作一次，Lull 不收集任何資料。"></p>
   </section>
 
   <!-- Footer -->
@@ -105,7 +185,10 @@
       <span data-en="Built with care · " data-zh="用心製作 · "></span>
       <a href="https://github.com/Olddsun/lull-app" target="_blank" data-en="Open Source on GitHub" data-zh="開放原始碼於 GitHub"></a>
     </p>
-    <a href="https://ko-fi.com/scottsun" target="_blank" class="btn-coffee">☕ <span data-en="Buy me a coffee" data-zh="請我喝杯咖啡"></span></a>
+    <a href="https://ko-fi.com/scottsun" target="_blank" class="btn-coffee">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+      <span data-en="Buy me a coffee" data-zh="請我喝杯咖啡"></span>
+    </a>
   </footer>
 
   <script>
@@ -118,7 +201,7 @@
       document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
       document.body.style.fontFamily = lang === 'zh'
         ? "'Noto Sans TC', sans-serif"
-        : "'Roboto', sans-serif";
+        : "'Inter', sans-serif";
     }
     setLang('en');
   </script>

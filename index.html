@@ -26,6 +26,13 @@
     <div class="main-control">
       <button id="playBtn" class="play-btn" title="Play / Pause">▶</button>
       <span id="playLabel" class="play-label">Paused</span>
+      <button id="timerBtn" class="timer-btn" title="Sleep timer">
+        <svg viewBox="0 0 12 12" fill="none" stroke-width="1.4" stroke-linecap="round">
+          <circle cx="6" cy="6.5" r="4.5"/>
+          <path d="M6 4.5v2l1.5 1"/>
+          <path d="M4 1.5h4M6 1.5v1"/>
+        </svg>
+      </button>
       <div class="spacer"></div>
       <label class="auto-toggle" title="Auto mode">
         <input type="checkbox" id="autoMode">
@@ -136,37 +143,47 @@
         <span class="vol-num" id="cafe-vol">0</span>
       </div>
 
-    </div><!-- /sounds -->
+      <!-- Custom sounds inserted here dynamically -->
+      <div id="customSoundsAnchor"></div>
 
-    <!-- My Sounds -->
-    <div class="divider"></div>
-    <div class="my-sounds" id="mySoundsSection">
-      <div class="my-sounds-header">
-        <span class="section-label" id="mySoundsLabel">My Sounds</span>
+      <!-- Import button -->
+      <div class="import-row" id="importRow">
         <button class="add-sound-btn" id="addSoundBtn" title="Import audio file">
           <svg viewBox="0 0 10 10" fill="none" stroke-width="1.6" stroke-linecap="round">
             <line x1="5" y1="1.5" x2="5" y2="8.5"/>
             <line x1="1.5" y1="5" x2="8.5" y2="5"/>
           </svg>
         </button>
+        <span class="import-label" id="importLabel">Import sound</span>
       </div>
-      <div class="my-sounds-list" id="mySoundsList">
-        <div class="empty-sounds" id="emptySounds">Import .mp3 to mix your own</div>
-      </div>
-    </div>
+
+    </div><!-- /sounds -->
 
     <!-- Divider -->
     <div class="divider"></div>
 
     <!-- Scenes -->
     <div class="presets">
-      <span class="section-label">Scenes</span>
-      <div class="preset-btns">
+      <div class="scenes-header">
+        <span class="section-label">Scenes</span>
+        <button class="add-scene-btn" id="addSceneBtn" title="Save current mix as scene">
+          <svg viewBox="0 0 10 10" fill="none" stroke-width="1.6" stroke-linecap="round">
+            <line x1="5" y1="1.5" x2="5" y2="8.5"/>
+            <line x1="1.5" y1="5" x2="8.5" y2="5"/>
+          </svg>
+        </button>
+      </div>
+      <div class="scene-name-input" id="sceneNameInput" style="display:none">
+        <input type="text" id="sceneNameField" placeholder="Scene name…" maxlength="16">
+        <button id="sceneNameSave">Save</button>
+      </div>
+      <div class="preset-btns" id="presetBtns">
         <button class="preset" data-preset="forest">Forest</button>
         <button class="preset" data-preset="rain">Rainy Night</button>
         <button class="preset" data-preset="cafe">Café</button>
         <button class="preset" data-preset="beach">Beach</button>
       </div>
+      <div class="preset-btns custom-preset-btns" id="customPresetBtns"></div>
     </div>
 
   </div><!-- /container -->
@@ -178,7 +195,7 @@
   <div class="pro-glyph">✦</div>
   <div class="pro-title">Lull Pro</div>
   <ul class="pro-list">
-    <li>Scenes &amp; Auto mode</li>
+    <li>Auto mode</li>
     <li>Import custom sounds</li>
   </ul>
   <button class="pro-buy-btn" id="proBuyBtn">Unlock — $2.99</button>

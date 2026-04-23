@@ -356,20 +356,175 @@ body {
   color: var(--accent);
 }
 
-/* ── My Sounds ── */
-.my-sounds {
-  margin-bottom: 14px;
+/* ── Timer button ── */
+.timer-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 6px;
+  font-size: 9.5px;
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  transition: all 0.15s;
+  gap: 3px;
+  flex-shrink: 0;
+  -webkit-app-region: no-drag;
+  min-width: 28px;
+  height: 24px;
 }
 
-.my-sounds-header {
+.timer-btn svg {
+  width: 11px;
+  height: 11px;
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
+.timer-btn:hover {
+  border-color: var(--text-3);
+  color: var(--text-2);
+}
+
+.timer-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+
+/* ── Scenes header ── */
+.scenes-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
 }
 
-.my-sounds-header .section-label {
+.scenes-header .section-label {
   margin-bottom: 0;
+}
+
+.add-scene-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  flex-shrink: 0;
+  -webkit-app-region: no-drag;
+}
+
+.add-scene-btn svg {
+  width: 10px;
+  height: 10px;
+  stroke: currentColor;
+}
+
+.add-scene-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+
+/* Scene name input */
+.scene-name-input {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.scene-name-input input {
+  flex: 1;
+  height: 26px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-subtle);
+  color: var(--text);
+  font-size: 11px;
+  font-family: inherit;
+  padding: 0 8px;
+  outline: none;
+  -webkit-app-region: no-drag;
+}
+
+.scene-name-input input:focus {
+  border-color: var(--accent);
+}
+
+.scene-name-input button {
+  height: 26px;
+  padding: 0 10px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 11px;
+  font-family: inherit;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+}
+
+/* Custom scene buttons */
+.custom-preset-btns {
+  margin-top: 6px;
+}
+
+.preset.custom-scene {
+  position: relative;
+}
+
+.preset.custom-scene .delete-scene-btn {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  width: 14px;
+  height: 14px;
+  background: transparent;
+  border: none;
+  color: var(--text-3);
+  font-size: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  border-radius: 50%;
+  transition: opacity 0.15s;
+  -webkit-app-region: no-drag;
+}
+
+.preset.custom-scene:hover .delete-scene-btn {
+  opacity: 1;
+}
+
+/* ── Import row ── */
+.import-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-top: 4px;
+}
+
+.import-row.pro-locked {
+  opacity: 0.45;
+  cursor: pointer;
+}
+
+.import-label {
+  font-size: 10px;
+  color: var(--text-3);
+  letter-spacing: 0.01em;
 }
 
 .add-sound-btn {
@@ -400,19 +555,6 @@ body {
   background: var(--accent-bg);
 }
 
-.my-sounds-list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.empty-sounds {
-  font-size: 10px;
-  color: var(--text-3);
-  text-align: center;
-  padding: 6px 0;
-  letter-spacing: 0.01em;
-}
 
 /* Custom sound row */
 .custom-sound-row {

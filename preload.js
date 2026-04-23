@@ -13,7 +13,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     }
   },
   invoke: (channel, ...args) => {
-    const INVOKE_CHANNELS = ['open-file-dialog']
+    const INVOKE_CHANNELS = ['open-file-dialog', 'get-custom-sounds-dir', 'delete-custom-sound']
     if (INVOKE_CHANNELS.includes(channel)) return ipcRenderer.invoke(channel, ...args)
   }
 })
