@@ -1,7 +1,7 @@
 {
-  "name": "Shh",
+  "name": "Drzzl",
   "version": "1.0.7",
-  "description": "Shh — ambient sound player for macOS",
+  "description": "Drzzl — ambient sound player for macOS",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -18,8 +18,8 @@
     "electron-reloader": "^1.2.3"
   },
   "build": {
-    "appId": "com.olddsun.shh",
-    "productName": "Shh",
+    "appId": "com.olddsun.drzzl",
+    "productName": "Drzzl",
     "files": [
       "**/*",
       "!node_modules/**",
